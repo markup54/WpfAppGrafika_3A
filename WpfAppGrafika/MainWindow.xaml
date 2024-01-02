@@ -1,0 +1,79 @@
+﻿<Window x:Class="WpfAppGrafika.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppGrafika"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="dalej_nazot">
+                <UniformGrid Rows="1">
+                    <Button Margin="20" Click="Nazot_Click">Nazot</Button>
+                    <Image 
+            x:Name="obraz"
+            Source="grafika/rys1.jpg"/>
+                    <!--
+        jeżeli grafika ma byc widoczna to 
+        MUSI BYC DODANA DO ZASOBÓW 
+        Właściwości każdego zdjęcia, Akcja kompilacji
+        -->
+                    <Button Margin="20" Click="Dalej_Click" >Dalej</Button>
+                </UniformGrid>
+            </TabItem>
+
+            <TabItem Header="radio">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <RadioButton GroupName="obrazki"
+                                     x:Name="obraz1" Checked="Zmiana1_Radio"
+                                     >
+                            Obraz 1
+                        </RadioButton>
+                        <RadioButton GroupName="obrazki"
+                                     x:Name="obraz2">
+                            Obraz 2
+                        </RadioButton>
+                        <RadioButton GroupName="obrazki"
+                                     x:Name="obraz3">
+                            Obraz 3
+                        </RadioButton>
+                    </StackPanel>
+                    <Image Source="grafika/rys4.jpg"
+                           x:Name="obraz_radio"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Slider">
+                <StackPanel >
+                    <Slider 
+                        Minimum="0" 
+                        Maximum="{Binding Maks}"
+                        Margin="30"
+                        x:Name="slider"
+                        />
+                    <Button Click="Zmiana_Click">Zmień</Button>
+                    <Image Source="grafika/rys1.jpg"
+                           x:Name="obraz_suwak"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Combo">
+                <DockPanel>
+                    
+                    <ComboBox x:Name="obrazki_comboBox"
+                              DockPanel.Dock="Bottom"
+                              SelectionChanged="obrazki_comboBox_SelectionChanged">
+                        <ComboBoxItem>obraz 1</ComboBoxItem>
+                        <ComboBoxItem>obraz 2</ComboBoxItem>
+                        <ComboBoxItem>obraz 3</ComboBoxItem>
+                        <ComboBoxItem>obraz 4</ComboBoxItem>
+                    </ComboBox>
+                    
+                    <Image Source="grafika/rys5.jpg"
+                           x:Name="obraz_combo"/>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
+</Window>
